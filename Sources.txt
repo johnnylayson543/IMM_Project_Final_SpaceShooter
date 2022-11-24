@@ -1,0 +1,33 @@
+References, Sources and Assets Used
+
+- Planet Earth Free
+URL: https://assetstore.unity.com/packages/3d/environments/sci-fi/planet-earth-free-23399
+
+- Space Warrior Jet
+URL: https://assetstore.unity.com/packages/3d/vehicles/space/space-warrior-jet-23174
+
+- Various Assets from Unity Learn (Beginners) (Unit 1 - 5)
+
+- Unity Documentation Script Reference
+https://docs.unity3d.com/ScriptReference/Vector3.Distance.html
+https://docs.unity3d.com/ScriptReference/Vector3.Angle.html
+https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html
+https://docs.unity3d.com/ScriptReference/Quaternion.RotateTowards.html 
+https://docs.unity3d.com/ScriptReference/Rigidbody.AddRelativeForce.html
+https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html
+https://docs.unity3d.com/ScriptReference/Transform-parent.html
+https://docs.unity3d.com/ScriptReference/GameObject-tag.html
+
+- Google 
+"unity get distance between two objects"
+"unity get angle between two objects"
+"unity rotate object towards point"
+"unity look direction"
+"unity rotate towards"
+"unity addrelativeforce towards"
+"unity get forward vector of an object"
+"unity find parent object"
+
+- QA sites (other people's question and answer)
+forum.unity.com
+
