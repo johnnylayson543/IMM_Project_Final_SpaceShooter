@@ -13,7 +13,9 @@ Bugs to be fixed and features to be added (subject to change):
 - Tweak and Change the UI to something stylish & cool (using the Unity Asset Store)
 - Add and put Game Over Screen when the Player dies
 - Add Score UI which adds when an enemy is destroyed
+- Tweaking the enemy spawn rate and spawn range + distance
+- Improve enemy ai so it doesn't just fly around everywhere in the map scene
 
 Optional
 - Add powerups
-
+- Change the Aspect Ration from 16:9 to HD (1920 x 720)
