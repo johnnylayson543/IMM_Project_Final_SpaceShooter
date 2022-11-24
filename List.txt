@@ -11,6 +11,8 @@ Bugs to be fixed and features to be added (subject to change):
 - Add Difficulty (Easy, Medium & Hard -> Increase Spawn Rate)
 - Add Particles and Sound Effects (using freesounds, incompetech or Unity Learn beginners unit files)
 - Tweak and Change the UI to something stylish & cool (using the Unity Asset Store)
+- Add and put Game Over Screen when the Player dies
+- Add Score UI which adds when an enemy is destroyed
 
 Optional
 - Add powerups
