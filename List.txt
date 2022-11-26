@@ -1,6 +1,5 @@
 Bugs to be fixed and features to be added (subject to change):
 
-- The GitHub repo button link is still linking on the Alpha version page
 - Set a despawn border for the enemies
 - Continue fixing and tweaking enemy AI
 - Continue fixing and tweaking Player (increase Player's speed and turn speed)
