@@ -1,17 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody enemyRb;
     private float speed = 50.0f;
-    private float earthDistance = 0;
-    private float playerDistance = 0;
-    private Vector3 targetPosition;
-    private Vector3 targetDirection;
-    private Quaternion targetRotation;
 
 
     // Start is called before the first frame update
@@ -23,53 +19,44 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject closestObj;
-        // Measure distance to the player and the earth
-        if (GameObject.Find("Earth") != null && GameObject.Find("Player") != null)
-        {
-            earthDistance = Vector3.Distance(GameObject.Find("Earth").transform.position, transform.position);
-            playerDistance = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
+        float stepDistance = speed * Time.deltaTime;
+        // Declare Targets with GameObjects if they exist
+        Target earthTarget = (GameObject.Find("Earth")) ? new Target(gameObject, GameObject.Find("Earth"), stepDistance) : null;
+        Target playerTarget = (GameObject.Find("Player")) ? new Target(gameObject, GameObject.Find("Player"), stepDistance) : null;
+        Target originTarget = (GameObject.Find("Origin")) ? new Target(gameObject, GameObject.Find("Origin"), stepDistance) : null;
 
+        // if they exist, mark the physical targets
+        if(playerTarget != null) playerTarget.setType(Target.Type.Physical);
+        if(earthTarget != null) earthTarget.setType(Target.Type.Physical);
 
-            // which is the closest object Earth or the Player
-            if (playerDistance > earthDistance)
-            {
-                closestObj = GameObject.Find("Player");
+        // place all targets into an array, and use Where array method to create sub-array categories "existing" and "physical"
+        Target[] allTargets = { earthTarget, playerTarget, originTarget };
+        Target[] existingTargets = allTargets.Where(x => x != null).ToArray();
+        Target[] physicalTargets = existingTargets.Where(x => x.getType() == Target.Type.Physical).ToArray();
 
-            }
-            else if (playerDistance < earthDistance)
-            {
-                closestObj = GameObject.Find("Earth");
-            }
-            else
-            {
-                closestObj = GameObject.Find("Main Camera");
-            }
-        } else
-        {
-            if (GameObject.Find("Earth")) { closestObj = GameObject.Find("Earth"); }
-            else { closestObj = GameObject.Find("Origin"); }
-        }
+        // count the physical objects that exist
+        int physicalTargetsLeft =  physicalTargets != null ? physicalTargets.Length : 0;
 
-        // assign position, rotation, and direction of the target object
-        targetPosition = Vector3.MoveTowards(transform.position, closestObj.transform.position, speed * Time.deltaTime);
-        targetDirection = (closestObj.transform.position - transform.position).normalized;
-        targetRotation = Quaternion.LookRotation(targetDirection);
-
-        // find the distance to the target object
-        float targetDistance = Vector3.Distance(closestObj.transform.position, transform.position);
+        // deduction: if no physical targets, go to the orgin; if there is one physical target, go to it; if there are two, go to nearest or farthest depending on the objective
+        Target closest = (physicalTargetsLeft == 0) ? originTarget : (physicalTargetsLeft == 1 ? physicalTargets[0] : (physicalTargets[0].getDistance() > physicalTargets[1].getDistance() ? physicalTargets[1] : physicalTargets[0]));
+        Target farthest = (physicalTargetsLeft == 0) ? originTarget : (physicalTargetsLeft == 1 ? physicalTargets[0] : (physicalTargets[0].getDistance() < physicalTargets[1].getDistance() ? physicalTargets[1] : physicalTargets[0]));
         
-
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
-        float speedMultiplier = (float) Math.Log10(Math.Pow(targetDistance,1.3f));
+        float speedMultiplier = (float) Math.Log10(Math.Pow(closest.getDistance(),1.3f));
 
         // set the rotation toward the target
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 0.5f);
+        transform.rotation = closest.getTurn();
         
-
         // add a relative force to the rigid body of the enemy spacecraft
-        enemyRb.AddRelativeForce(Vector3.forward * Time.deltaTime * speed * speedMultiplier, ForceMode.Impulse);
+        enemyRb.AddRelativeForce(Vector3.forward * stepDistance * speedMultiplier, ForceMode.Impulse);
         
+    }
+
+
+
+    Target circleTarget(Target t)
+    {
+        return t;
     }
 
     

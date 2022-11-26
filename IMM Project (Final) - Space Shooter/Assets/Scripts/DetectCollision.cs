@@ -34,6 +34,7 @@ public class DetectCollision : MonoBehaviour
         {
             Destroy(gameObject); // Destroy the porjectile gameObject
             Destroy(other.gameObject); // Destroy the other gameObject (the Enemy)
+
         }
     }
 }
