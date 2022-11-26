@@ -1370,5 +1370,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9176781881666783605, guid: 25d6f262e80850444a515c23f8f49c3e, type: 3}
+      propertyPath: explosionParticle
+      value: 
+      objectReference: {fileID: 19821056, guid: f3c6703b5f419524aa82cc0ed21c65b2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25d6f262e80850444a515c23f8f49c3e, type: 3}
