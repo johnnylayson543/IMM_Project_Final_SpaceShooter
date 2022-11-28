@@ -6,6 +6,10 @@ public class EarthController : MonoBehaviour
 {
     private int impactCounter = 0;
     private GameManager gameManager; // A GameManager variable to link & use the GM GameObject, its script & components (its classes, methods and properties)
+
+    // Earth Explosion Particle Properties
+    public ParticleSystem earthExplosionParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,7 @@ public class EarthController : MonoBehaviour
             {
                 Destroy(gameObject); // Destroy Earth object
                 gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
+                Instantiate(earthExplosionParticle, transform.position, earthExplosionParticle.transform.rotation); // Instantiate an Earth Explosion Particles
 
             }
             Destroy(other.gameObject);  // Destroy the porjectile gameObject

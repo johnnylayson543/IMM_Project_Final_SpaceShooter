@@ -1072,6 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce394b721bfb8b8478cc913f452006fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earthExplosionParticle: {fileID: 19821056, guid: f3c6703b5f419524aa82cc0ed21c65b2, type: 3}
 --- !u!1 &1521658499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,7 +1312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441ff75146ff80f419d45d80e1520f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  URL: https://github.com/johnnylayson543/IMM_Project_Alpha_SpaceShooter
   gameOverText: {fileID: 1338903}
   restartButton: {fileID: 1101170474}
   isGameActive: 0
