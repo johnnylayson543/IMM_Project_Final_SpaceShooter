@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("SpaceShooter2"); // Go to the controls menu
     }
 
+    public void GoToSpaceShooter3()
+    {
+        SceneManager.LoadScene("SpaceShooter3"); // Go to the controls menu
+    }
+
     public void loadURL()
     {
         Application.OpenURL(URL); // Open the URL which contains the Game Files and Assets from the GitHub Repo
