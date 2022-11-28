@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour
         float speedMultiplier = (float) Math.Log10(Math.Pow(closest.getDistance(),1.3f));
 
         // set the rotation toward the target
-        transform.rotation = closest.getTurn();
+        transform.rotation = farthest.getTurn();
         
         // add a relative force to the rigid body of the enemy spacecraft
         enemyRb.AddRelativeForce(Vector3.forward * stepDistance * speedMultiplier, ForceMode.Impulse);
