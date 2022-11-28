@@ -57,11 +57,9 @@ public class ProjectileLauncher : MonoBehaviour
         // Launch a projectile if Space key is pressed down
         if (fireProjectile)
         {
-
             // Player launches a projectile
             GameObject projectileObj = Instantiate(projectilePrefab, transform.position, transform.rotation);
             projectileObj.tag = parentObj.tag + "Projectile";
-
         }
 
         // reset the firing timer

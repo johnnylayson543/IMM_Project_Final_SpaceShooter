@@ -10,6 +10,8 @@ TagManager:
   - Friendly
   - PlayerProjectile
   - EnemyProjectile
+  - EnemyProjectileTargetingPlayer
+  - EnemyProjectileTargetingEarth
   layers:
   - Default
   - TransparentFX

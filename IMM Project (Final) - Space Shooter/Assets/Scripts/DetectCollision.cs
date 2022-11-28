@@ -7,13 +7,17 @@ using UnityEngine;
 public class DetectCollision : MonoBehaviour
 {
     private string owner = "Player";
-    private string target = "Enemy";
+    private GameManager gameManager; // A GameManager variable to link & use the GM GameObject, its script & components (its classes, methods and properties)
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Find the "Game Manager" gameObject/GameObject and apply the GameManager Script & Component to the gameManager variable (via the "Game Manager" gameObject/GameObject)
         owner = tag.Substring(0, tag.Length - "Projectile".Length);
 
+        //string tagConstant = "ProjectileTargeting";
+
+        //target = tag.Substring(tag.IndexOf(tagConstant) + tagConstant.Length, tag.Length - (tag.IndexOf(tagConstant) + tagConstant.Length + 1));
     }
 
     // Update is called once per frame
@@ -25,15 +29,17 @@ public class DetectCollision : MonoBehaviour
     // Projectile and Enemy Collision Detection
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (owner == "Player") { target = "Enemy"; }
-        else if (owner == "Enemy") { target = "Player"; }
+        bool targets = ( owner == "Enemy") ? (other.tag == "Earth" || other.tag == "Player") : 
+                                             ( ( owner == "Player" ) ? other.tag == "Enemy" : false ) ; 
+
 
         // If the colliding projectile hits an enemy that shares a tag called "Enemy"
-        if (other.CompareTag(target))
+        if (targets)
         {
             Destroy(gameObject); // Destroy the porjectile gameObject
             Destroy(other.gameObject); // Destroy the other gameObject (the Enemy)
+
+            if (other.tag == "Player" || (EarthController.getImpactCounter() > 1 && other.tag == "Earth")) gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
 
         }
     }
