@@ -14,10 +14,6 @@ public class DetectCollision : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Find the "Game Manager" gameObject/GameObject and apply the GameManager Script & Component to the gameManager variable (via the "Game Manager" gameObject/GameObject)
         owner = tag.Substring(0, tag.Length - "Projectile".Length);
-
-        //string tagConstant = "ProjectileTargeting";
-
-        //target = tag.Substring(tag.IndexOf(tagConstant) + tagConstant.Length, tag.Length - (tag.IndexOf(tagConstant) + tagConstant.Length + 1));
     }
 
     // Update is called once per frame

@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         float stepDistance = speed * Time.deltaTime;
-        Target targeting;
+        
 
         // Declare Targets with GameObjects if they exist
         Target earthTarget = (GameObject.Find("Earth")) ? new Target(gameObject, GameObject.Find("Earth"), stepDistance) : null;
@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
             farthest = physicalTargets[ Array.IndexOf(physicalTargets, physicalTargets.Max(x => x.getDistance() )) ];
         }
 
-        targeting = farthest;
+        Target targeting = farthest;
         
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
         float speedMultiplier = (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f));
