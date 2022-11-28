@@ -13,6 +13,7 @@ TagManager:
   - PlayerProjectileTargetingEnemy
   - PlayerProjectile
   - EnemyProjectile
+  - Origin
   layers:
   - Default
   - TransparentFX
