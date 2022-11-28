@@ -29,6 +29,7 @@ public class DetectCollision : MonoBehaviour
     // Projectile and Enemy Collision Detection
     private void OnTriggerEnter(Collider other)
     {
+        // is it a target of thw projectile's owner 
         bool targets = ( owner == "Enemy") ? (other.tag == "Earth" || other.tag == "Player") : 
                                              ( ( owner == "Player" ) ? other.tag == "Enemy" : false ) ; 
 

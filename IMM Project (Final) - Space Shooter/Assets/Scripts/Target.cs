@@ -19,7 +19,7 @@ public class Target
     }
 
 
-
+    string name;
     Vector3 position;
     Vector3 direction;
     Quaternion rotation;
@@ -59,6 +59,8 @@ public class Target
         return type;
     }
 
+    public string getName() { return name; }
+
     public void setPosition(Vector3 p)
     {
         position = p;
@@ -92,6 +94,7 @@ public class Target
 
     public Target (GameObject source, GameObject target, float stepDistance)
     {
+        name = source.name;
         position = (Vector3.MoveTowards(source.transform.position, target.transform.position, stepDistance));
         direction = ((target.transform.position - source.transform.position).normalized);
         rotation = (Quaternion.LookRotation(direction));
