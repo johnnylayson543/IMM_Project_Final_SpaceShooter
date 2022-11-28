@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
 
     // URL String
-    public string URL = "https://github.com/johnnylayson543/IMM_Project_Final_SpaceShooter";
+    private string URL = "https://github.com/johnnylayson543/IMM_Project_Final_SpaceShooter";
 
     // TMPro Text Variables
     public TextMeshProUGUI gameOverText; // The game over text
