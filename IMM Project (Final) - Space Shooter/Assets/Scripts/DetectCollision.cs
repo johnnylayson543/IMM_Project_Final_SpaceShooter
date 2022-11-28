@@ -36,7 +36,7 @@ public class DetectCollision : MonoBehaviour
             Destroy(gameObject); // Destroy the porjectile gameObject
             Destroy(other.gameObject); // Destroy the other gameObject (the Enemy)
 
-            if (other.tag == "Player" || (EarthController.getImpactCounter() > 1 && other.tag == "Earth")) 
+            if (other.tag == "Player" || (EarthController.getImpactCounter() >= 1 && other.tag == "Earth")) 
             {
                 gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
             }
