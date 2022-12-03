@@ -5,7 +5,7 @@ using UnityEngine;
 public class EarthController : MonoBehaviour
 {
     private static int impactCounter = 0;
-    private static int impactLimit = 1;
+    private static int impactLimit = 10;
     private GameManager gameManager; // A GameManager variable to link & use the GM GameObject, its script & components (its classes, methods and properties)
 
     // Earth Explosion Particle Properties
