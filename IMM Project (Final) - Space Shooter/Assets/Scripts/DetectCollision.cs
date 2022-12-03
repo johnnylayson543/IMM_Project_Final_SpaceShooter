@@ -33,7 +33,13 @@ public class DetectCollision : MonoBehaviour
         // If the colliding projectile hits an enemy that shares a tag called "Enemy"
         if (targets)
         {
+<<<<<<< HEAD
             if (other.tag == "Player" || (EarthController.getImpactCounter() >= 1 && other.tag == "Earth")) 
+=======
+                Destroy(gameObject); // Destroy the porjectile gameObject
+                Destroy(other.gameObject); // Destroy the other gameObject (the Enemy)
+            if (other.tag == "Player" || ((EarthController.getImpactCounter() >= EarthController.getImpactLimit() - 1 ) && other.tag == "Earth"))
+>>>>>>> 50c5f6f60ed45eae709ac5f167f2c72b9f38d4e2
             {
                 Destroy(gameObject); // Destroy the porjectile gameObject
                 Destroy(other.gameObject); // Destroy the other gameObject (the Enemy)
