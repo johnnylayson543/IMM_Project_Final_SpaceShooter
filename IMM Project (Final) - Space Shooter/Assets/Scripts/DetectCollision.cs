@@ -27,12 +27,14 @@ public class DetectCollision : MonoBehaviour
     {
         // is it a target of thw projectile's owner 
         bool targets = ( owner == "Enemy") ? (other.tag == "Earth" || other.tag == "Player") : 
-                                             ( ( owner == "Player" ) ? other.tag == "Enemy" : false ) ; 
+                                             ( ( owner == "Player" ) ? other.tag == "Enemy" : false ) ;
 
+        bool isGameOver = (other.tag == "Player" || (EarthController.getImpactCounter() >= 1 && other.tag == "Earth"));
 
         // If the colliding projectile hits an enemy that shares a tag called "Enemy"
         if (targets)
         {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
             if (other.tag == "Player" || (EarthController.getImpactCounter() >= 1 && other.tag == "Earth")) 
 =======
@@ -47,6 +49,12 @@ public class DetectCollision : MonoBehaviour
             }
            
 
+=======
+            Destroy(gameObject); // Destroy the porjectile gameObject
+            Destroy(other.gameObject); // Destroy the other gameObject (the Enemy)
+            if(isGameOver)  gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
+            
+>>>>>>> Stashed changes
         }
     }
 }
