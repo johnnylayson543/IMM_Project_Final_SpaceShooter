@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target
+public class Target extend GameObject
 {
     public enum Type
     {

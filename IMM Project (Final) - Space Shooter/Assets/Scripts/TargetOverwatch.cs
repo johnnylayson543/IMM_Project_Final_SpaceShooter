@@ -8,7 +8,7 @@ public class TargetOverwatch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneObjects = FindObjectsOfType<GameObject>();
     }
 
     // Update is called once per frame
@@ -16,7 +16,8 @@ public class TargetOverwatch : MonoBehaviour
     {
         float speed = 0;
         float stepDistance = speed * Time.deltaTime;
-        sceneObjects = FindObjectsOfType<GameObject>();
+        
+
         Target[] Targets = loadTargets(gameObject, stepDistance);
     }
 
