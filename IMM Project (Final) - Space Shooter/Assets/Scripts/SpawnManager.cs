@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
 
         // 
         // Local method variables to set a random range of x or z positions the enemy will spawn in the game
-        float spawnPosX = Random.Range(500, spawnRange)*Mathf.Cos(Random.Range(0, 2*Mathf.PI));  
+        float spawnPosX = Random.Range(500, spawnRange) * Mathf.Cos(Random.Range(0, 2 * Mathf.PI));  
         float spawnPosZ = Random.Range(500, spawnRange) * Mathf.Sin(Random.Range(0, 2 * Mathf.PI));  
                                
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);  // Add the random range of x and z positions on a new Vector3 to create a new random position
