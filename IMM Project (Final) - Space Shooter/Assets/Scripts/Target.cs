@@ -124,6 +124,7 @@ public class Target
         //Vector3 gravity1;
         sourceObj = source;
        
+        // Gets the average disance and direction of the other targets of the source's own kind
         distance1 = targets.Average(x => x.distance);
         direction1 = new Vector3(
         targets.Average( x => x.direction.x),
@@ -137,6 +138,7 @@ public class Target
             targets.Average(x => (1 / Mathf.Pow(x.distance, 2))                                                      * Mathf.Cos(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       )  ).normalized;
         */
 
+        // calculates relative navigation parameters turn and distance from target position, target direction and target rotation
         position = (Vector3.MoveTowards(source.transform.position, absoluteCentreOfMass, stepDistance));
         direction = ((position - source.transform.position).normalized);
         rotation = (Quaternion.LookRotation(direction));
