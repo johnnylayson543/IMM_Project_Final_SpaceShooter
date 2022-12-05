@@ -27,9 +27,10 @@ public class EnemyController : MonoBehaviour
         Target earthTarget = (GameObject.Find("Earth")) ? new Target(gameObject, GameObject.Find("Earth"), stepDistance) : null;
         Target playerTarget = (GameObject.Find("Player")) ? new Target(gameObject, GameObject.Find("Player"), stepDistance) : null;
         Target originTarget = (GameObject.Find("Origin")) ? new Target(gameObject, GameObject.Find("Origin"), stepDistance) : null;
+        Target enemyCentreOfMass = TargetOverwatch.swarmFormationTargetPerSwarmMember(gameObject, stepDistance);
 
         // if they exist, mark the physical targets
-        if(playerTarget != null) playerTarget.setType(Target.Type.Physical);
+        if (playerTarget != null) playerTarget.setType(Target.Type.Physical);
         if(earthTarget != null) earthTarget.setType(Target.Type.Physical);
 
         // place all targets into an array, and use Where array method to create sub-array categories "existing" and "physical"
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour
             farthest = physicalTargets[ Array.IndexOf(physicalTargets, physicalTargets.Max(x => x.getDistance() )) ];
         }
 
-        Target targeting = farthest;
+        Target targeting = enemyCentreOfMass;
 
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
         float speedMultiplier = (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f))/2;

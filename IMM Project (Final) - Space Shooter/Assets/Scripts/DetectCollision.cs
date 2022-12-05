@@ -30,7 +30,7 @@ public class DetectCollision : MonoBehaviour
                                              ( ( owner == "Player" ) ? other.tag == "Enemy" : false ) ;
 
         bool isGameOver = (other.tag == "Player" || (EarthController.getImpactCounter() >= EarthController.getImpactLimit() && other.tag == "Earth"));
-        bool isDestroyed = (other.tag == "Player" || (EarthController.getImpactCounter() >= EarthController.getImpactLimit() && other.tag == "Earth")) || (other.tag == "Enemy");
+        bool isDestroyed = isGameOver || (other.tag == "Enemy");
 
         // If the colliding projectile hits an enemy that shares a tag called "Enemy"
         if (targets)
