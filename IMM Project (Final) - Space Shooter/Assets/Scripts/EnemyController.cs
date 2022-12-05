@@ -28,13 +28,14 @@ public class EnemyController : MonoBehaviour
         Target playerTarget = (GameObject.Find("Player")) ? new Target(gameObject, GameObject.Find("Player"), stepDistance) : null;
         Target originTarget = (GameObject.Find("Origin")) ? new Target(gameObject, GameObject.Find("Origin"), stepDistance) : null;
         Target enemyCentreOfMass = TargetOverwatch.swarmFormationTargetPerSwarmMember(gameObject, stepDistance);
+        enemyCentreOfMass.setType(Target.Type.Tactical);
 
         // if they exist, mark the physical targets
         if (playerTarget != null) playerTarget.setType(Target.Type.Physical);
         if(earthTarget != null) earthTarget.setType(Target.Type.Physical);
 
         // place all targets into an array, and use Where array method to create sub-array categories "existing" and "physical"
-        Target[] allTargets = { earthTarget, playerTarget, originTarget };
+        Target[] allTargets = { earthTarget, playerTarget, originTarget, enemyCentreOfMass };
         Target[] existingTargets = allTargets.Where(x => x != null).ToArray();
         Target[] physicalTargets = existingTargets.Where(x => x.getType() == Target.Type.Physical).ToArray();
 
@@ -52,7 +53,7 @@ public class EnemyController : MonoBehaviour
         {
             closest = physicalTargets[ Array.IndexOf(physicalTargets, physicalTargets.Min(x => x.getDistance() )) ];
             farthest = physicalTargets[ Array.IndexOf(physicalTargets, physicalTargets.Max(x => x.getDistance() )) ];
-        }
+        } else if ()
 
         Target targeting = enemyCentreOfMass;
 

@@ -9,6 +9,7 @@ public class Target
     {
         Physical,
         Path,
+        Tactical,
         General
     }
 
@@ -21,6 +22,7 @@ public class Target
 
     GameObject sourceObj;
     GameObject targetObj;
+    GameObject[] targetObjects;
     string name;
     Vector3 position;
     Vector3 direction;
@@ -120,7 +122,8 @@ public class Target
         float distance1;
         Vector3 direction1;
         Vector3 gravity1;
-
+        sourceObj = source;
+        targetObjects = targets;
        
         distance1 = targets.Average(x => x.distance);
         direction1 = new Vector3(
