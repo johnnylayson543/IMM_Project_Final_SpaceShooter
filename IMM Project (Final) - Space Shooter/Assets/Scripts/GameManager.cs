@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     // TMPro Text Variables
     public TextMeshProUGUI gameOverText; // The game over text
+    public TextMeshProUGUI scoreText; // The score text
+    private int score; // The score number
 
     // Buttons
     public Button restartButton; // The restart button
@@ -57,6 +59,12 @@ public class GameManager : MonoBehaviour
     public void loadURL()
     {
         Application.OpenURL(URL); // Open the URL which contains the Game Files and Assets from the GitHub Repo
+    }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd; // Pass on whatever added score (scoreToAdd) passed via parameters to the score variable
+        scoreText.text = "Score: " + score; // Create and concatenate the score number to the Score text on the scoreText.text (the text element)
     }
 
     public void GameOver()
