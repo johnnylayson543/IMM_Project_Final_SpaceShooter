@@ -121,9 +121,8 @@ public class Target
     {
         float distance1;
         Vector3 direction1;
-        Vector3 gravity1;
+        //Vector3 gravity1;
         sourceObj = source;
-        targetObjects = targets;
        
         distance1 = targets.Average(x => x.distance);
         direction1 = new Vector3(
@@ -132,11 +131,11 @@ public class Target
         targets.Average(x => x.direction.z)).normalized;
         Vector3 absoluteCentreOfMass = new Vector3(direction1.x * distance1, direction1.y * distance1, direction1.z * distance1);
 
-        gravity1 = new Vector3(
+        /*gravity1 = new Vector3(
             targets.Average(x => (1 / Mathf.Pow(x.distance, 2)) * Mathf.Cos(Mathf.Atan(x.position.y / x.position.x)) * Mathf.Sin(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       ),
             targets.Average(x => (1 / Mathf.Pow(x.distance, 2)) * Mathf.Sin(Mathf.Atan(x.position.y / x.position.x)) * Mathf.Sin(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       ),
             targets.Average(x => (1 / Mathf.Pow(x.distance, 2))                                                      * Mathf.Cos(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       )  ).normalized;
-
+        */
 
         position = (Vector3.MoveTowards(source.transform.position, absoluteCentreOfMass, stepDistance));
         direction = ((position - source.transform.position).normalized);
