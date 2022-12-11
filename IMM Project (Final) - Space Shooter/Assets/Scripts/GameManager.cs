@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateScore(0); // Set the initial value of the score to 0
+
     }
 
     public void GoToSpaceShooter0()
