@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateScore(0); // Set the initial value of the score to 0
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateScore(0); // Set the initial value of the score to 0
     }
 
     public void GoToSpaceShooter0()
