@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody enemyRb;
     private float speed = 50.0f;
+    private float speedLimitFactor = 0.5f;
     
 
 
@@ -66,7 +67,7 @@ public class EnemyController : MonoBehaviour
         Target targeting = farthest;
 
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
-        float speedMultiplier = (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f))/2;
+        float speedMultiplier = (targeting != null) ? (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f))/2 *speedLimitFactor : 1;
 
         // set the rotation toward the target
 
