@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody enemyRb;
     private float speed = 50.0f;
-    private float speedLimitFactor = 0.5f;
+    private float speedLimitFactor = 0.75f;
     
 
 

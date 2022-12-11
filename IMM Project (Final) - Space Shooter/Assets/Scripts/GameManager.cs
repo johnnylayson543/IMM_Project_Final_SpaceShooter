@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour
     // TMPro Text Variables
     public TextMeshProUGUI gameOverText; // The game over text
     public TextMeshProUGUI scoreText; // The score text
+    public TextMeshProUGUI earthLivesText; 
     private int score; // The score number
+    private int earthLives;
 
     // Buttons
     public Button restartButton; // The restart button
@@ -28,7 +30,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        earthLives = EarthController.getImpactLimit();
+        earthLivesText.text = "Health: " + earthLives.ToString();
+        scoreText.text = "Score: " + "0";
     }
 
     // Update is called once per frame
@@ -65,6 +69,12 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd; // Pass on whatever added score (scoreToAdd) passed via parameters to the score variable
         scoreText.text = "Score: " + score; // Create and concatenate the score number to the Score text on the scoreText.text (the text element)
+    }
+
+    public void UpdateEarthLivesCounter(int livesLeft)
+    {
+        this.earthLives = livesLeft;
+        earthLivesText.text = "Health: " + livesLeft;
     }
 
     public void GameOver()

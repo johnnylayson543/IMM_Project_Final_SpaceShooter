@@ -29,6 +29,8 @@ public class EarthController : MonoBehaviour
         
         if (other.CompareTag("EnemyProjectile")) {
             impactCounter += 1;
+            int livesLeft = impactLimit - impactCounter; 
+            gameManager.UpdateEarthLivesCounter(livesLeft);
         }
 
     }
