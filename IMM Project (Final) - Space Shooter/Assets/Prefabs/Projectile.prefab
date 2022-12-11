@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: -8150483134831421127}
   - component: {fileID: 7369666271169278055}
   - component: {fileID: 6402440765938722915}
+  - component: {fileID: 3382544398387675295}
+  - component: {fileID: 528252173010104705}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -34,8 +36,7 @@ Transform:
   m_LocalPosition: {x: 4.01, y: 0.2, z: 45.53}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 235009446855834126}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -154,46 +155,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a7e057179301e40aeb1a77d19e5963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8300371605307767011
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 235009446855834126}
-  - component: {fileID: 3695557571363874850}
-  - component: {fileID: 1454134730668963028}
-  m_Layer: 0
-  m_Name: SelfDestruct
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &235009446855834126
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300371605307767011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6115526885769809984}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!198 &3695557571363874850
+--- !u!198 &3382544398387675295
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300371605307767011}
+  m_GameObject: {fileID: 6989644615067733270}
   serializedVersion: 8
   lengthInSec: 5
   simulationSpeed: 1
@@ -890,7 +858,7 @@ ParticleSystem:
     m_SpriteRenderer: {fileID: 0}
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
-    alignToDirection: 0
+    alignToDirection: 1
     m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
@@ -4894,14 +4862,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &1454134730668963028
+--- !u!199 &528252173010104705
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300371605307767011}
+  m_GameObject: {fileID: 6989644615067733270}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4915,7 +4883,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
