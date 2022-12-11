@@ -36,9 +36,14 @@ public class DetectCollision : MonoBehaviour
         if (targets)
         {
             //SelfDestructManager.detonateExplosionHere(gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(gameObject); // Destroy the porjectile gameObject
-            if (isDestroyed) Destroy(other.gameObject);
+            Destroy(gameObject); // Destroy the projectile gameObject
+            if (isDestroyed) {
+                Destroy(other.gameObject);
+                gameManager.UpdateScore(10); // Call the UpdateScore method in the gameManager to update the score by 10 for each kill
+            }
+            
             if (isGameOver) gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
+            
         }
     }
 }
