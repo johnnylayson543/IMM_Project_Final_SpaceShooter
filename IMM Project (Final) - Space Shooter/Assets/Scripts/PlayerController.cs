@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     // Player Movement Variables and Properties
     private Rigidbody playerRb; // The Rigidbody variable of the Player
     private float speed = 100.0f; // The speed of the Player
-    private float turnSpeed = 80.0f; // The turning speed of the player
+    private float turnSpeed = 100.0f; // The turning speed of the player
     private float horizontalInput;  // Horizontal Input Movements
     private float forwardInput;  // Vertical/Forward Input Movements
     
