@@ -7,6 +7,7 @@ using UnityEngine;
 public class DetectCollision : MonoBehaviour
 {
     private string owner = "Player";
+    private int killScoreValue = 10; // The score value that player gets per enemy kill
     private GameManager gameManager; // A GameManager variable to link & use the GM GameObject, its script & components (its classes, methods and properties)
 
     // Start is called before the first frame update
@@ -39,7 +40,7 @@ public class DetectCollision : MonoBehaviour
             Destroy(gameObject); // Destroy the projectile gameObject
             if (isDestroyed) {
                 Destroy(other.gameObject);
-                gameManager.UpdateScore(10); // Call the UpdateScore method in the gameManager to update the score by 10 for each kill
+                gameManager.UpdateScore(killScoreValue); // Call the UpdateScore method in the gameManager to update the score by 10 for each kill
             }
             
             if (isGameOver) gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
