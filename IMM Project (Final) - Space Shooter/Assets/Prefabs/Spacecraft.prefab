@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 2230009443204575274}
   - component: {fileID: 2230009443195110748}
   - component: {fileID: 2230009443195110749}
+  - component: {fileID: 7906692994281631411}
   m_Layer: 0
   m_Name: Spacecraft
   m_TagString: Untagged
@@ -198,3 +199,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.12645644
   m_Center: {x: -1.9852332e-23, y: -0.0000000055879354, z: 2.3665827e-30}
+--- !u!114 &7906692994281631411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2230009443195077610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a7e057179301e40aeb1a77d19e5963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

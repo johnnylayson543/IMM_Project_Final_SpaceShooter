@@ -14,7 +14,7 @@ public class SelfDestruct : MonoBehaviour
     void Update()
     {
 
-        if(Vector3.Distance(transform.position, GameObject.Find("Earth").transform.position) > 100 ) Destroy(gameObject);
+        if(Vector3.Distance(transform.position, GameObject.Find("Earth").transform.position) > 1000 ) Destroy(gameObject);
 
     }
 
