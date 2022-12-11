@@ -7,8 +7,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody enemyRb;
-    private float speed = 50.0f;
-    private float speedLimitFactor = 0.75f;
+    public float speed = 50.0f;
+    public float speedLimitFactor = 0.75f;
     
 
 
