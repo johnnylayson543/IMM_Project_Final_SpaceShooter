@@ -35,7 +35,6 @@ public class DetectCollision : MonoBehaviour
         // If the colliding projectile hits an enemy that shares a tag called "Enemy"
         if (targets)
         {
-            //SelfDestructManager.detonateExplosionHere(gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject); // Destroy the porjectile gameObject
             if (isDestroyed) Destroy(other.gameObject);
             if (isGameOver) gameManager.GameOver(); // Call the gameManager variable (which contains the GameObject and Component "Game Manager") and it's method GameOver() to call a game over
