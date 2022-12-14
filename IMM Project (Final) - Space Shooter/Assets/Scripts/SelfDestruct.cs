@@ -13,8 +13,8 @@ public class SelfDestruct : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Vector3.Distance(transform.position, GameObject.Find("Earth").transform.position) > 1000 ) Destroy(gameObject);
+       // Out of bounds - if it goes 1000 unit distance, destroy it
+       if(Vector3.Distance(transform.position, GameObject.Find("Earth").transform.position) > 1000 ) Destroy(gameObject);
 
     }
 
