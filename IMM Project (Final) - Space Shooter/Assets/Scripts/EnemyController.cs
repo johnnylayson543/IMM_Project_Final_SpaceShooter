@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
             farthest = farthestP.getDistance() > farthestP.getDistance() ? farthestP : farthestT;
         }
 
-        // targeting strategy is set to farthest as it displays better behaviour
+        // targeting strategy is set to farthest as it displays better behaviour, (if the targeting object was destroyed target the centre of mass of own group)
         Target targeting = (farthest != null) ? farthest : enemyCentreOfMass;
 
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
