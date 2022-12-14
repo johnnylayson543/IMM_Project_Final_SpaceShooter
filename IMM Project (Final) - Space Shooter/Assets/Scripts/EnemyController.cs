@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // targeting strategy is set to farthest as it displays better behaviour
-        Target targeting = farthest;
+        Target targeting = (farthest != null) ? farthest : enemyCentreOfMass;
 
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
         float speedMultiplier = (targeting != null) ? (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f))/2 *speedLimitFactor : 1;

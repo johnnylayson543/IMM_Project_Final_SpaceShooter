@@ -14,7 +14,7 @@ public class SelfDestruct : MonoBehaviour
     void Update()
     {
        // Out of bounds - if it goes 1000 unit distance, destroy it
-       if(Vector3.Distance(transform.position, GameObject.Find("Earth").transform.position) > 1000 ) Destroy(gameObject);
+       if(Vector3.Distance(transform.position, GameObject.Find("Origin").transform.position) > 1000 ) Destroy(gameObject);
 
     }
 
