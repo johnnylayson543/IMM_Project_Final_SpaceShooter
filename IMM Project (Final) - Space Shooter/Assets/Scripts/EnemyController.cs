@@ -6,22 +6,22 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private Rigidbody enemyRb;
-    public float speed = 25.0f;
-    public float speedLimitFactor = 0.75f;
+    private Rigidbody enemyRb;  // the rigid body component
+    public float speed = 25.0f;  // the speed of the spacecraft
+    public float speedLimitFactor = 0.75f; // the speed limit factor of the spacecraft
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody>();
+        enemyRb = GetComponent<Rigidbody>();  // get rigid body component and assign it a variable 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float stepDistance = speed * Time.deltaTime;
+        float stepDistance = speed * Time.deltaTime; // the distance travelled by a spacecraft in delta time  
         
 
         // Declare Targets with GameObjects if they exist
@@ -64,25 +64,18 @@ public class EnemyController : MonoBehaviour
             farthest = farthestP.getDistance() > farthestP.getDistance() ? farthestP : farthestT;
         }
 
+        // targeting strategy is set to farthest as it displays better behaviour
         Target targeting = farthest;
 
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
         float speedMultiplier = (targeting != null) ? (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f))/2 *speedLimitFactor : 1;
 
         // set the rotation toward the target
-
         transform.rotation = targeting.getTurn();
         
         // add a relative force to the rigid body of the enemy spacecraft
         enemyRb.AddRelativeForce(Vector3.forward * stepDistance * speedMultiplier, ForceMode.Impulse);
         
-    }
-
-
-
-    Target circleTarget(Target t)
-    {
-        return t;
     }
 
     

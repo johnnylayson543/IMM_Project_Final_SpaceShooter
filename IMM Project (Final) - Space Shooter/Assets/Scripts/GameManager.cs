@@ -30,8 +30,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        earthLives = EarthController.getImpactLimit();
+        // feeds the initial state of the Earth to the Earth lives text element
+        earthLives = EarthController.getImpactLimit(); 
         earthLivesText.text = "Health: " + earthLives.ToString();
+
+        // feeds the initial score to the score text element
         scoreText.text = "Score: " + "0";
     }
 
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateEarthLivesCounter(int livesLeft)
     {
+        // updates the Earth lives text element
         this.earthLives = livesLeft;
         earthLivesText.text = "Health: " + livesLeft;
     }

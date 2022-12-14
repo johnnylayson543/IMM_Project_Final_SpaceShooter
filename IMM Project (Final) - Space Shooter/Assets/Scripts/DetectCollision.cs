@@ -30,10 +30,17 @@ public class DetectCollision : MonoBehaviour
 
         ParticleSystem particleSystem2 = other.GetComponent<ParticleSystem>();
         // is it a target of thw projectile's owner 
+        // checks who the owner of projectile is, and checks if 'other' gameObject is one of its targets
+        // and returns true or false
         bool targets = ( owner == "Enemy") ? (other.tag == "Earth" || other.tag == "Player") : 
                                              ( ( owner == "Player" ) ? other.tag == "Enemy" : false ) ;
 
+        // checks when either the player or the Earth are set for destruction and returns true or false
+        // and then what game over happened
         bool isGameOver = (other.tag == "Player" || (EarthController.getImpactCounter() >= EarthController.getImpactLimit() && other.tag == "Earth"));
+        
+        // checks whether other game object should be destroyed, if either isGameOver or other gameObject
+        // is an enemy
         bool isDestroyed = isGameOver || (other.tag == "Enemy");
 
         // If the colliding projectile hits an enemy that shares a tag called "Enemy"

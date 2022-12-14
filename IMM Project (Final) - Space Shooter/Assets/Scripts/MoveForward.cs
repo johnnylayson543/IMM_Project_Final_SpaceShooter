@@ -7,7 +7,6 @@ public class MoveForward : MonoBehaviour
 {
     private float moveSpeed = 50.0f; // The move speed of a GameObjects
     private Rigidbody projectileRb;
-    Vector3 initialDirection;
 
     // Start is called before the first frame update
     void Start()

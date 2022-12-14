@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    public GameObject projectilePrefab;
-    private bool fireProjectile = false;
-    private bool canShoot = true;
-    float firingInterval = 1.0f;
-    private float firingTimer = 0.0f;
-    private GameObject targetObj;
+    public GameObject projectilePrefab;   // variable to be assigned to the game object projectile.
+    private bool fireProjectile = false;  // should the projectile be instantiated aka 'fired'
+    private bool canShoot = true;  // should spacecraft be able to fire, initially true
+    float firingInterval = 1.0f;  // the interval to wait before the spacecraft can fire again
+    private float firingTimer = 0.0f; // the timer that tracks time between firings
+    private GameObject targetObj;  // the game object that is the target
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +23,15 @@ public class ProjectileLauncher : MonoBehaviour
         // add delta time in seconds to the firing timer
         firingTimer += Time.deltaTime;
 
-        // find the parent name
+        // find the parent name who owns the projectile launcher
         string parentName = transform.parent.gameObject.name;
 
         // assign the parent object
         GameObject parentObj = transform.parent.gameObject;
 
         // assign the target object based on the parent object
+        // if owner is player, target is enemy,
+        // if owner is enemy, if they exist the target the player else the Earth else the origin 
         if (parentObj.tag == "Player") {
             targetObj = GameObject.Find("Enemy");
         } else if(parentObj.tag == "Enemy")
@@ -37,8 +39,6 @@ public class ProjectileLauncher : MonoBehaviour
             if (GameObject.Find("Player")) { targetObj = GameObject.Find("Player"); }
             else if (GameObject.Find("Earth"))  { targetObj = GameObject.Find("Earth"); }
             else { targetObj = GameObject.Find("Origin"); }
-        } else
-        { 
         }
 
 
@@ -52,6 +52,8 @@ public class ProjectileLauncher : MonoBehaviour
         bool fireCondition1 = (parentObj.tag == "Enemy") && (Vector3.Angle(transform.forward, targetPosition.normalized) < 30.0f && Vector3.Distance(transform.position, targetObj.transform.position) < 50.0f);
         bool fireCondition2 = (parentObj.tag == "Player") && (Input.GetKeyDown(KeyCode.Space));
         fireProjectile = (fireCondition1 || fireCondition2) && (canShoot == true);
+        
+        // if they are permitted to fire, then they cannot fire again until a time has passed
         if(fireProjectile) { canShoot = false; }
 
         // Launch a projectile if Space key is pressed down
