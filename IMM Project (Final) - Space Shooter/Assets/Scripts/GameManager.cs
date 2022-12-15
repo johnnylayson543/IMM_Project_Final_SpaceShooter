@@ -18,15 +18,16 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI earthLivesText; 
     private int score; // The score number
     private int earthLives;
+    Scene currentScene;
 
     // Buttons
     public Button restartButton; // The restart button
 
     // Bool to check if the game is still active (initial state of this should set true applied at the Start() method)
-    public bool isGameActive;
+    public static bool isGameActive = true;
 
     // Set the game's difficulty
-    public int difficulty;
+    public static int difficulty;
 
     // Call the SpawnManager Script
     private SpawnManager spawnManager;
@@ -34,8 +35,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>(); // Find the SpawnManager GameObject and get its component the SpawnManager script
-        StartGame(difficulty);
+        currentScene = SceneManager.GetActiveScene();
+        isGameActive = currentScene.name == "SpaceShooter1";
+        // checks if the game has been activated before letting the sequence start
+        if (isGameActive)
+        {
+            spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>(); // Find the SpawnManager GameObject and get its component the SpawnManager script
+            StartGame(difficulty);
+        }
     }
 
     // Update is called once per frame
@@ -115,13 +122,10 @@ public class GameManager : MonoBehaviour
         // feeds the initial score to the score text element
         scoreText.text = "Score: " + "0";
 
-        // sets the spawn rate based on difficulty ; 0.5 means half 
-        float spawnRate = (difficulty < 1) ? 0.5f : (difficulty == 1) ? 1.0f : (difficulty > 1 && difficulty <= 2) ? 2.0f : (difficulty > 2.0f) ? 3.0f : 1;  
-        
-        // Set the spawnRate based on dividing the value of the difficulty passed by the parameters
-        spawnManager.spawnWaitSeconds /= spawnRate;
-
+        spawnManager.setSpawnRate(difficulty);
         StartCoroutine(spawnManager.SpawnEnemy());
     }
+
+    
 
 }

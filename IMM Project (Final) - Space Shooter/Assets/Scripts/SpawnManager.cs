@@ -58,4 +58,14 @@ public class SpawnManager : MonoBehaviour
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);  // Add the random range of x and z positions on a new Vector3 to create a new random position
         return randomPos; // Return the value of the new randomPos
     }
+
+
+    public void setSpawnRate(int difficulty)
+    {
+        // sets the spawn rate based on difficulty ; 0.5 means half 
+        float spawnRate = (difficulty < 1) ? 0.5f : (difficulty == 1) ? 1.0f : (difficulty > 1 && difficulty <= 2) ? 2.0f : (difficulty > 2.0f) ? 3.0f : 1;
+
+        // Set the spawnRate based on dividing the value of the difficulty passed by the parameters
+        spawnWaitSeconds /= spawnRate;
+    }
 }

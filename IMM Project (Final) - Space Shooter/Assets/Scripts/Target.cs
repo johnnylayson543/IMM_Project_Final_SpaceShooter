@@ -120,9 +120,9 @@ public class Target
         sourceObj = source; targetObj = target;  // the source and target game objects are set for future reference
         position = (Vector3.MoveTowards(source.transform.position, target.transform.position, stepDistance));  // the position of the target relative to the source is calculated
         direction = ((target.transform.position - source.transform.position).normalized);  // the compass position of the target from the source expressed as a unit vector
-        rotation = (Quaternion.LookRotation(direction));  // the direction expressed as a quaternion (a set of rotation parameters and extension of complex numbers) from the source
+        rotation = (direction != Vector3.zero) ? (Quaternion.LookRotation(direction)) : new Quaternion();  // the direction expressed as a quaternion (a set of rotation parameters and extension of complex numbers) from the source
         distance = Vector3.Distance(target.transform.position, source.transform.position); // the distance from the source to the target
-        turn = Quaternion.RotateTowards(source.transform.rotation, rotation, 0.5f); // the change in rotation needed for the source to face the target expressed as quaternion 
+        turn = (rotation != new Quaternion()) ? Quaternion.RotateTowards(source.transform.rotation, rotation, 0.5f) : new Quaternion(); // the change in rotation needed for the source to face the target expressed as quaternion 
     }
 
     // another constructor for the Target object when many targets are considered as one big target

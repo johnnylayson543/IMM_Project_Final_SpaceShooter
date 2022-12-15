@@ -72,7 +72,8 @@ public class EnemyController : MonoBehaviour
         if (speedMultiplier < 0) speedMultiplier = 1;
 
         // set the rotation toward the target
-        transform.rotation = targeting.getTurn();
+        Quaternion turn1 = (targeting.getTurn() != new Quaternion() ) ? targeting.getTurn() : transform.rotation;
+        transform.rotation = turn1;
         
         // add a relative force to the rigid body of the enemy spacecraft
         enemyRb.AddRelativeForce(Vector3.forward * stepDistance * speedMultiplier, ForceMode.Impulse);

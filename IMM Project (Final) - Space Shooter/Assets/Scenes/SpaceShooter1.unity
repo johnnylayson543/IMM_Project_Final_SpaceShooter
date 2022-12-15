@@ -6529,8 +6529,8 @@ MonoBehaviour:
   scoreText: {fileID: 88170655}
   earthLivesText: {fileID: 1086640969}
   restartButton: {fileID: 1101170474}
-  isGameActive: 0
-  difficulty: 1
+  isGameActive: 1
+  difficulty: 3
 --- !u!1001 &6065150950849116655
 PrefabInstance:
   m_ObjectHideFlags: 0
