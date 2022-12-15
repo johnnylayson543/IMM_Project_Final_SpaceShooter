@@ -40,9 +40,6 @@ public class SpawnManager : MonoBehaviour
             // Instantiate or spawn random enemies with a randomly generated spawn position
             Instantiate(enemies[index], GenerateSpawnPosition(), enemies[index].transform.rotation);
 
-            int randomExtra = Random.Range(1, 2);
-            if (randomExtra == 2) Instantiate(enemies[index], GenerateSpawnPosition(), enemies[index].transform.rotation);
-
         }
     }
 
