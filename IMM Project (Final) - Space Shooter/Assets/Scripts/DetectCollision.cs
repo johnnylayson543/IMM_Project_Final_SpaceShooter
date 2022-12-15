@@ -51,6 +51,7 @@ public class DetectCollision : MonoBehaviour
 
             if (isDestroyed) {
                 other.GetComponent<ParticleSystem>().Play(); // play particle system explosion effect 
+                other.GetComponent<AudioSource>().Play();
                 Destroy(other.gameObject, 1); // destroy object but wait 2 seconds for particle effect to finish
                 gameManager.UpdateScore(killScoreValue); // Call the UpdateScore method in the gameManager to update the score by 10 for each kill
             }
