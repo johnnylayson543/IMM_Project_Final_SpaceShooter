@@ -9,8 +9,8 @@ public class SpawnManager : MonoBehaviour
 
     // Enemy Spawn Properties
     public float spawnWaitSeconds = 10.0f; // The waiting time in seconds between enemy spawns in the game
-    public float[] rangeDistanceFromEarth = new float[2] { 500.0f, 1000.0f };
-    public float[] rangeAngleOfApproachAroundEarth = new float[2] { 0, 2 * Mathf.PI };
+    public float[] rangeDistanceFromEarth = new float[2] { 500.0f, 1000.0f }; // range of distances from the Earth that the enemy can spawn from
+    public float[] rangeAngleOfApproachAroundEarth = new float[2] { 0, 2 * Mathf.PI }; // range of angles of approach around the Earth that the enemy spawns ... or compass direction of enemy spawn locations
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +49,11 @@ public class SpawnManager : MonoBehaviour
 
         // Generate a random distance and angle from a range of values (proximity to Earth and arc around the axis of the Earth)   
         float randomRadius = Random.Range(rangeDistanceFromEarth[0], rangeDistanceFromEarth[1]);
-        float randomZAxisArc = Random.Range(rangeAngleOfApproachAroundEarth[0], rangeAngleOfApproachAroundEarth[1]);
+        float randomAzimuth = Random.Range(rangeAngleOfApproachAroundEarth[0], rangeAngleOfApproachAroundEarth[1]);
 
         // Local method variables to set a random range of x or z positions the enemy will spawn in the game
-        float spawnPosX = randomRadius * Mathf.Cos(randomZAxisArc);  
-        float spawnPosZ = randomRadius * Mathf.Sin(randomZAxisArc);  
+        float spawnPosX = randomRadius * Mathf.Cos(randomAzimuth);  
+        float spawnPosZ = randomRadius * Mathf.Sin(randomAzimuth);  
                                
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);  // Add the random range of x and z positions on a new Vector3 to create a new random position
         return randomPos; // Return the value of the new randomPos
