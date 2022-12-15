@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     // Enumerator which spawns an enemy
-    IEnumerator SpawnEnemy()
+    public IEnumerator SpawnEnemy()
     {
         // While gameplay is remains true, instantiate a new, random enemy and spawn it on a randomly generated position
         // How fast the spawn is depends on the enemies' spawn rate

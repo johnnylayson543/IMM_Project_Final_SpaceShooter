@@ -25,17 +25,17 @@ public class GameManager : MonoBehaviour
     // Bool to check if the game is still active (initial state of this should set true applied at the Start() method)
     public bool isGameActive;
 
+    // Set the Difficulty Level
+    public int difficulty;
 
+    // Call the SpawnManager Script
+    private SpawnManager spawnManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        // feeds the initial state of the Earth to the Earth lives text element
-        earthLives = EarthController.getImpactLimit(); 
-        earthLivesText.text = "Health: " + earthLives.ToString();
-
-        // feeds the initial score to the score text element
-        scoreText.text = "Score: " + "0";
+        spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>(); // Find the SpawnManager GameObject and get its component the SpawnManager script
+        StartGame();
     }
 
     // Update is called once per frame
@@ -60,8 +60,14 @@ public class GameManager : MonoBehaviour
 
     public void GoToSpaceShooter3()
     {
-        SceneManager.LoadScene("SpaceShooter3"); // Go to the controls menu
+        SceneManager.LoadScene("SpaceShooter3"); // Go to the difficulty menu
     }
+
+    /*public void EasyDifficulty()
+    {
+        SceneManager.LoadScene("SpaceShooter1"); // Go to the main game (Play Game)
+        difficulty = 100;
+    }*/
 
     public void loadURL()
     {
@@ -86,6 +92,18 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true); // If game is over, make the game over text visible
         restartButton.gameObject.SetActive(true); // If game is over, make the restart button visible
         isGameActive = false; // Set the isGameActive to false, in which if applied to a if or while condition, everything stops if the bool value is false
+    }
+
+    public void StartGame()
+    {
+        // feeds the initial state of the Earth to the Earth lives text element
+        earthLives = EarthController.getImpactLimit();
+        earthLivesText.text = "Health: " + earthLives.ToString();
+
+        // feeds the initial score to the score text element
+        scoreText.text = "Score: " + "0";
+
+        StartCoroutine(spawnManager.SpawnEnemy());
     }
 
 }
