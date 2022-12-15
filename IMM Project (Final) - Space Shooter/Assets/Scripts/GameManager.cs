@@ -25,9 +25,6 @@ public class GameManager : MonoBehaviour
     // Bool to check if the game is still active (initial state of this should set true applied at the Start() method)
     public bool isGameActive;
 
-    // Set the Difficulty Level
-    public int difficulty;
-
     // Call the SpawnManager Script
     private SpawnManager spawnManager;
 
@@ -62,12 +59,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("SpaceShooter3"); // Go to the difficulty menu
     }
-
-    /*public void EasyDifficulty()
-    {
-        SceneManager.LoadScene("SpaceShooter1"); // Go to the main game (Play Game)
-        difficulty = 100;
-    }*/
 
     public void loadURL()
     {
