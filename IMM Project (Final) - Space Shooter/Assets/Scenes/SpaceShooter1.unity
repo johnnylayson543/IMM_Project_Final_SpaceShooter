@@ -864,8 +864,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 6362791342196543920, guid: cfed13678694f9641a21e20a5ec05329, type: 3}
-  spawnRate: 8
-  spawnRange: 80
+  spawnWaitSeconds: 10
+  rangeDistanceFromEarth:
+  - 500
+  - 1000
+  rangeAngleOfApproachAroundEarth:
+  - 0
+  - 6.2831855
 --- !u!1 &852019925
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,6 +6530,7 @@ MonoBehaviour:
   earthLivesText: {fileID: 1086640969}
   restartButton: {fileID: 1101170474}
   isGameActive: 0
+  difficulty: 1
 --- !u!1001 &6065150950849116655
 PrefabInstance:
   m_ObjectHideFlags: 0
