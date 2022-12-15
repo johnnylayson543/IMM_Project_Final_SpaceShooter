@@ -384,7 +384,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1311312466}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToSpaceShooter1
+        m_MethodName: HardDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -785,8 +785,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 0}
+  scoreText: {fileID: 0}
+  earthLivesText: {fileID: 0}
   restartButton: {fileID: 0}
   isGameActive: 0
+  difficulty: 0
 --- !u!1 &1355180853
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,7 +970,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1311312466}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToSpaceShooter1
+        m_MethodName: MediumDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1202,7 +1205,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1311312466}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToSpaceShooter1
+        m_MethodName: EasyDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

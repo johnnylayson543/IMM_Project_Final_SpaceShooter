@@ -68,6 +68,24 @@ public class GameManager : MonoBehaviour
         Application.OpenURL(URL); // Open the URL which contains the Game Files and Assets from the GitHub Repo
     }
 
+    public void EasyDifficulty()
+    {
+        SceneManager.LoadScene("SpaceShooter1"); // Go to the main game (Play Game) in Easy Difficulty
+        difficulty = 1; // Set the initial value of difficulty to 1
+    }
+
+    public void MediumDifficulty()
+    {
+        SceneManager.LoadScene("SpaceShooter1"); // Go to the main game (Play Game) in Medium Difficulty
+        difficulty = 2; // Set the initial value of difficulty to 2
+    }
+
+    public void HardDifficulty()
+    {
+        SceneManager.LoadScene("SpaceShooter1"); // Go to the main game (Play Game) in Hard Difficulty
+        difficulty = 3; // Set the initial value of difficulty to 3
+    }
+
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd; // Pass on whatever added score (scoreToAdd) passed via parameters to the score variable
