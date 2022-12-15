@@ -97,8 +97,11 @@ public class GameManager : MonoBehaviour
         // feeds the initial score to the score text element
         scoreText.text = "Score: " + "0";
 
+        // sets the spawn rate based on difficulty ; 0.5 means half 
+        float spawnRate = (difficulty < 1) ? 0.5f : (difficulty == 1) ? 1.0f : (difficulty > 1 && difficulty <= 2) ? 2.0f : (difficulty > 2.0f) ? 3.0f : 1;  
+        
         // Set the spawnRate based on dividing the value of the difficulty passed by the parameters
-        //spawnManager.spawnRate /= difficulty;
+        spawnManager.spawnWaitSeconds /= spawnRate;
 
         StartCoroutine(spawnManager.SpawnEnemy());
     }
