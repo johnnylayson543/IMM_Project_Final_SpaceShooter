@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     // Bool to check if the game is still active (initial state of this should set true applied at the Start() method)
     public bool isGameActive;
 
+    // Set the game's difficulty
+    public int difficulty;
+
     // Call the SpawnManager Script
     private SpawnManager spawnManager;
 
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>(); // Find the SpawnManager GameObject and get its component the SpawnManager script
-        StartGame();
+        StartGame(difficulty);
     }
 
     // Update is called once per frame
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false; // Set the isGameActive to false, in which if applied to a if or while condition, everything stops if the bool value is false
     }
 
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
         // feeds the initial state of the Earth to the Earth lives text element
         earthLives = EarthController.getImpactLimit();
@@ -93,6 +96,9 @@ public class GameManager : MonoBehaviour
 
         // feeds the initial score to the score text element
         scoreText.text = "Score: " + "0";
+
+        // Set the spawnRate based on dividing the value of the difficulty passed by the parameters
+        //spawnManager.spawnRate /= difficulty;
 
         StartCoroutine(spawnManager.SpawnEnemy());
     }
