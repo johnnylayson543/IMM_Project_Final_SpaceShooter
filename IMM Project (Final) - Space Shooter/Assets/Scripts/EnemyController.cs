@@ -69,6 +69,7 @@ public class EnemyController : MonoBehaviour
 
         // if the target is far away, set a higher speed multipler based on the log10 of power of 1.3 of the distance;
         float speedMultiplier = (targeting != null) ? (float) Math.Log10(Math.Pow(targeting.getDistance(),1.3f))/2 *speedLimitFactor : 1;
+        if (speedMultiplier < 0) speedMultiplier = 1;
 
         // set the rotation toward the target
         transform.rotation = targeting.getTurn();

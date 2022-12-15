@@ -144,18 +144,28 @@ public class Target
         // all the targets called here the absolute centre of mass (purely geometric, not a force vector)
         Vector3 absoluteCentreOfMass = new Vector3(direction1.x * distance1, direction1.y * distance1, direction1.z * distance1);
 
-        /*gravity1 = new Vector3(
-            targets.Average(x => (1 / Mathf.Pow(x.distance, 2)) * Mathf.Cos(Mathf.Atan(x.position.y / x.position.x)) * Mathf.Sin(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       ),
-            targets.Average(x => (1 / Mathf.Pow(x.distance, 2)) * Mathf.Sin(Mathf.Atan(x.position.y / x.position.x)) * Mathf.Sin(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       ),
-            targets.Average(x => (1 / Mathf.Pow(x.distance, 2))                                                      * Mathf.Cos(Mathf.Acos(x.position.z / (1 / Mathf.Pow(x.distance, 2))))       )  ).normalized;
-        */
+        // weight average target distance and direction
+        float minDistance = targets.Min(x => x.distance);
+        float[] weights = (targets.Select(x => (float) (Mathf.Pow(( x.distance / minDistance),1)) )).ToArray();
+        float distance2 = getWeightedAverage(targets.Select(x => (float) x.distance).ToArray(), weights);
+        Vector3 direction2;
+        direction2 = new Vector3(
+            getWeightedAverage(targets.Select(x => (float) x.direction.x).ToArray(), weights),
+            getWeightedAverage(targets.Select(x => (float) x.direction.y).ToArray(), weights),
+            getWeightedAverage(targets.Select(x => (float) x.direction.x).ToArray(), weights)
+        ).normalized;
+
+        Vector3 relativeCentreOfMass = new Vector3(direction2.x * distance2, direction2.y * distance2, direction2.z * distance2);
+        
+        Vector3 chosenVector3 = absoluteCentreOfMass;
+
 
         // calculates relative navigation parameters turn and distance from target position, target direction and target rotation
         // the absolute centric of mass is used as an average target in the following calculations, many targets considered as one big target
-        position = (Vector3.MoveTowards(source.transform.position, absoluteCentreOfMass, stepDistance));
-        direction = ((position - source.transform.position).normalized);
+        position = (Vector3.MoveTowards(source.transform.position, chosenVector3, stepDistance));
+        direction = ((chosenVector3 - source.transform.position).normalized);
         rotation = (Quaternion.LookRotation(direction));
-        distance = Vector3.Distance(position, source.transform.position);
+        distance = Vector3.Distance(chosenVector3, source.transform.position);
         turn = Quaternion.RotateTowards(source.transform.rotation, rotation, 0.5f);
     }
 
@@ -175,4 +185,16 @@ public class Target
         return w;
     }
 
+    float getWeightedAverage(float[] basis, float[] weight)
+    {
+        float sumWeighted = 0;
+        float sumWeights = weight.Sum();
+
+        for (int i = 0; i < basis.Length; i++)
+        {
+            sumWeighted += basis[i] * weight[i];
+        }
+
+        return sumWeighted / sumWeights;
+    }
 }
