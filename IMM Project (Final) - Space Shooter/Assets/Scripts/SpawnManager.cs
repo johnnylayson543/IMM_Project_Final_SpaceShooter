@@ -8,9 +8,9 @@ public class SpawnManager : MonoBehaviour
     public List<GameObject> enemies;  // Create a list of enemy gameObjects
 
     // Enemy Spawn Properties
-    public float spawnRate = 10.0f; // The rate enemy spawns in the game
-    public float spawnRange = 1000.0f; // The range the enemy spawns in the game
-    public float minRangeFactor = 0.5f; // how close inside range should they spawn as a factor.
+    public float spawnWaitSeconds = 10.0f; // The waiting time in seconds between enemy spawns in the game
+    public float[] rangeDistanceFromEarth = new float[2] { 500.0f, 1000.0f };
+    public float[] rangeAngleOfApproachAroundEarth = new float[2] { 0, 2 * Mathf.PI };
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +31,8 @@ public class SpawnManager : MonoBehaviour
         // How fast the spawn is depends on the enemies' spawn rate
         while (true)
         {
-            // Create thread to increase or decrease the enemy spawn rate
-            yield return new WaitForSeconds(spawnRate);
+            // Create thread to time the interval between enemy spawns in seconds
+            yield return new WaitForSeconds(spawnWaitSeconds);
 
             // Spawn a random type of enemy using random range and the enemy count in the list. Apply the random enemy on the index variable
             int index = Random.Range(0, enemies.Count);
@@ -47,10 +47,13 @@ public class SpawnManager : MonoBehaviour
     private Vector3 GenerateSpawnPosition()
     {
 
-        // 
+        // Generate a random distance and angle from a range of values (proximity to Earth and arc around the axis of the Earth)   
+        float randomRadius = Random.Range(rangeDistanceFromEarth[0], rangeDistanceFromEarth[1]);
+        float randomZAxisArc = Random.Range(rangeAngleOfApproachAroundEarth[0], rangeAngleOfApproachAroundEarth[1]);
+
         // Local method variables to set a random range of x or z positions the enemy will spawn in the game
-        float spawnPosX = Random.Range(minRangeFactor * spawnRange, spawnRange) * Mathf.Cos(Random.Range(0, 2 * Mathf.PI));  
-        float spawnPosZ = Random.Range(minRangeFactor * spawnRange, spawnRange) * Mathf.Sin(Random.Range(0, 2 * Mathf.PI));  
+        float spawnPosX = randomRadius * Mathf.Cos(randomZAxisArc);  
+        float spawnPosZ = randomRadius * Mathf.Sin(randomZAxisArc);  
                                
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);  // Add the random range of x and z positions on a new Vector3 to create a new random position
         return randomPos; // Return the value of the new randomPos
