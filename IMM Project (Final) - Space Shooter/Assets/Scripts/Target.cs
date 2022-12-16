@@ -143,58 +143,16 @@ public class Target
         // using the average direction vector and average distance scalar it finds the average position of
         // all the targets called here the absolute centre of mass (purely geometric, not a force vector)
         Vector3 absoluteCentreOfMass = new Vector3(direction1.x * distance1, direction1.y * distance1, direction1.z * distance1);
-
-        // weight average target distance and direction
-        float minDistance = targets.Min(x => x.distance);
-        float[] weights = (targets.Select(x => (float) (Mathf.Pow(( x.distance / minDistance),1)) )).ToArray();
-        float distance2 = getWeightedAverage(targets.Select(x => (float) x.distance).ToArray(), weights);
-        Vector3 direction2;
-        direction2 = new Vector3(
-            getWeightedAverage(targets.Select(x => (float) x.direction.x).ToArray(), weights),
-            getWeightedAverage(targets.Select(x => (float) x.direction.y).ToArray(), weights),
-            getWeightedAverage(targets.Select(x => (float) x.direction.x).ToArray(), weights)
-        ).normalized;
-
-        Vector3 relativeCentreOfMass = new Vector3(direction2.x * distance2, direction2.y * distance2, direction2.z * distance2);
         
+        // absolute centre of mass is the chosen as the target
         Vector3 chosenVector3 = absoluteCentreOfMass;
-
 
         // calculates relative navigation parameters turn and distance from target position, target direction and target rotation
         // the absolute centric of mass is used as an average target in the following calculations, many targets considered as one big target
-        position = (Vector3.MoveTowards(source.transform.position, chosenVector3, stepDistance));
-        direction = ((chosenVector3 - source.transform.position).normalized);
-        rotation = (Quaternion.LookRotation(direction));
-        distance = Vector3.Distance(chosenVector3, source.transform.position);
-        turn = Quaternion.RotateTowards(source.transform.rotation, rotation, 0.5f);
-    }
-
-    // gets the x y z dimensions from spherical dimensions specific
-    Vector3 getCartFromSpherical (Vector3 position1)
-    {
-        float r = Mathf.Pow(Mathf.Pow(position1.x,2)+ Mathf.Pow(position1.y, 2)+ Mathf.Pow(position1.z, 2), 1/2);
-        float theta = Mathf.Atan(position1.y / position1.x);
-        float phi = Mathf.Acos(position1.z / r);
-
-        Vector3 w = new Vector3(
-            r * Mathf.Cos(theta) * Mathf.Sin(phi),
-            r * Mathf.Sin(theta) * Mathf.Sin(phi),
-            r * Mathf.Cos(phi)
-            );
-
-        return w;
-    }
-
-    float getWeightedAverage(float[] basis, float[] weight)
-    {
-        float sumWeighted = 0;
-        float sumWeights = weight.Sum();
-
-        for (int i = 0; i < basis.Length; i++)
-        {
-            sumWeighted += basis[i] * weight[i];
-        }
-
-        return sumWeighted / sumWeights;
+        position = (Vector3.MoveTowards(source.transform.position, chosenVector3, stepDistance)); // the relative coordinates of the target to source 
+        direction = ((chosenVector3 - source.transform.position).normalized); // the unit vector to the target from the source
+        rotation = (Quaternion.LookRotation(direction));  // the rotation expressed as Quaternion the direction of the target from the neutral rotation of the source
+        distance = Vector3.Distance(chosenVector3, source.transform.position); // the distance between the target of the source
+        turn = Quaternion.RotateTowards(source.transform.rotation, rotation, 0.5f); // the turn expressed as Quaternion that the source must revolve to face the target
     }
 }

@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText; // The score text
     public TextMeshProUGUI earthLivesText; 
     private int score; // The score number
-    private int earthLives;
-    Scene currentScene;
+    private int earthLives; // Earth lives remaining
+    Scene currentScene; // the current scene as an object
 
     // Buttons
     public Button restartButton; // The restart button
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentScene = SceneManager.GetActiveScene();
+        currentScene = SceneManager.GetActiveScene(); // gets the current scene from the scene
         isGameActive = currentScene.name == "SpaceShooter1";
         // checks if the game has been activated before letting the sequence start
         if (isGameActive)
@@ -122,8 +122,8 @@ public class GameManager : MonoBehaviour
         // feeds the initial score to the score text element
         scoreText.text = "Score: " + "0";
 
-        spawnManager.setSpawnRate(difficulty);
-        StartCoroutine(spawnManager.SpawnEnemy());
+        spawnManager.setSpawnRate(difficulty); // calls a function from the spawn manager to set the spawn rate from the difficulty level
+        StartCoroutine(spawnManager.SpawnEnemy()); // starts the coroutine to spawn enemies using the spawn manager 
     }
 
     

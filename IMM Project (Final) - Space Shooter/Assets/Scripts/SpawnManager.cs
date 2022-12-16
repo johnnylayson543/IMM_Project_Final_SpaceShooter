@@ -59,7 +59,7 @@ public class SpawnManager : MonoBehaviour
         return randomPos; // Return the value of the new randomPos
     }
 
-
+    // a method to set the rate of spawning
     public void setSpawnRate(int difficulty)
     {
         // sets the spawn rate based on difficulty ; 0.5 means half 

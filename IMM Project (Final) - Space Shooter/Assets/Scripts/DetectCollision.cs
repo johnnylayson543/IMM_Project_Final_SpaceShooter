@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DetectCollision : MonoBehaviour
 {
-    private string owner = "Player";
+    private string owner = "Player"; // a variable to hold the name of the owner of a projectile, in this case the tag which the owner belongs
     private int killScoreValue = 10; // The score value that player gets per enemy kill
     private GameManager gameManager; // A GameManager variable to link & use the GM GameObject, its script & components (its classes, methods and properties)
 
@@ -27,8 +27,6 @@ public class DetectCollision : MonoBehaviour
     // Projectile and Enemy Collision Detection
     private void OnTriggerEnter(Collider other)
     {
-
-        ParticleSystem particleSystem2 = other.GetComponent<ParticleSystem>();
         // is it a target of thw projectile's owner 
         // checks who the owner of projectile is, and checks if 'other' gameObject is one of its targets
         // and returns true or false
