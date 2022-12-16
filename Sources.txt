@@ -6,6 +6,12 @@ URL: https://assetstore.unity.com/packages/3d/environments/sci-fi/planet-earth-f
 - Space Warrior Jet
 URL: https://assetstore.unity.com/packages/3d/vehicles/space/space-warrior-jet-23174
 
+- 8 bit style sound effects
+https://assetstore.unity.com/packages/audio/sound-fx/8-bit-style-sound-effects-68228
+
+- War FX particle effects
+https://assetstore.unity.com/packages/vfx/particles/war-fx-5669
+
 - Various Assets from Unity Learn (Beginners) (Unit 1 - 5)
 
 - Unity Documentation Script Reference
@@ -30,6 +36,12 @@ https://docs.unity3d.com/ScriptReference/GameObject-tag.html
 
 - QA sites (other people's question and answer)
 forum.unity.com
+answers.unity.com
+
+- Microsoft
+https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
+https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.sum?view=net-7.0
+https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.average?view=net-7.0
 
 Music and SFX
 
